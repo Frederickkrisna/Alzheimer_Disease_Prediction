@@ -1,6 +1,6 @@
 # Alzheimer's Disease Prediction with AI
 
-### Tech Stack
+### Framework, Tools, and Language
 - Python
 - Jupyter Notebook
 - StreamLit
