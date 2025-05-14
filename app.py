@@ -2,18 +2,33 @@ import streamlit as st
 import numpy as np
 # import pickle
 import joblib
+import requests
+from streamlit_lottie import st_lottie
 
 # with open("model.pkl", "rb") as f:
 #     model = pickle.load(f)
 
 model = joblib.load("model.pkl")
 
+def load_lottie_url(url):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+
+lottie_brain = load_lottie_url("https://lottie.host/16de5156-ec3e-4760-adf2-540b64ee45f5/U6b3IfJ1m1.json")
+
 st.set_page_config(page_title="Alzheimer's Prediction", layout="centered", page_icon="🧠")
+
+st_lottie(lottie_brain, speed=1, width=300, height=200, key="brain")
+
 st.title("🧠 Alzheimer's Disease Prediction using Machine Learning")
 
 st.markdown("""
 Please fill in the details below to predict the chance of Alzheimer's Disease.
 """)
+
+st.markdown("---")
 
 age = st.number_input("Age: The age of the patients ranges from 60 to 90 years.", min_value=60, max_value=90, value=75)
 alcohol = st.slider("Alcohol Consumption: Weekly alcohol consumption in units.", 0, 20, value=14)
@@ -41,6 +56,8 @@ input_features = np.array([[
     adl,
     to_binary(disorientation)
 ]])
+
+st.markdown("----")
 
 if st.button("🔍 Predict Diagnosis"):
     try:
