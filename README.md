@@ -15,7 +15,7 @@ git clone https://github.com/Frederickkrisna/Alzheimer_Disease_Prediction.git
 ```
 2. Install required depedencies
 ```
-pip install
+pip install -r requirements.txt
 ```
 3. Run the app
 ```
