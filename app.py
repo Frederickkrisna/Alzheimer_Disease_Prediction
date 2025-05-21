@@ -8,7 +8,7 @@ from streamlit_lottie import st_lottie
 # with open("model.pkl", "rb") as f:
 #     model = pickle.load(f)
 
-model = joblib.load("model.pkl")
+model = joblib.load("model.joblib")
 
 def load_lottie_url(url):
     r = requests.get(url)
